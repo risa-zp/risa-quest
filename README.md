@@ -10,7 +10,7 @@
 
 - トップ：タイトルと6つの場所をつなぐ冒険マップ
 - 同じページに自己紹介・制作物・学習と技術・強み・将来像・次の挑戦
-- 制作物だけ別の詳細ページ（calendar.html / portfolio.html）
+- 制作物だけ別の詳細ページ（life-management.html / portfolio.html。旧calendar.htmlも維持）
 
 未記入の項目は空欄です。技術は実際の学習・使用経験のチェックポイントで表現しています。生成AIを活用して制作しています。
 
@@ -27,3 +27,7 @@ HTML / CSS / JavaScript。ビルド不要の静的サイトです。Google Fonts
 [PUBLISHING.md](PUBLISHING.md) を参照してください。GitHub Pagesでmainブランチのルートから公開します。
 
 ローカルではindex.htmlをブラウザーで開いて内容を確認できます。共有する場合はGitHub Pagesの公開URLを使用します。
+
+公開先：https://risa-zp.github.io/risa-quest/
+
+生活管理Webアプリ：目標・振り返りを含む機能は実装済み、ユーザー登録・ログインは未完成として記載しています。
