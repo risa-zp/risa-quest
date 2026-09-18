@@ -14,7 +14,7 @@ URLを入力しただけでは公開されません。初回は、下のアッ�
 1. GitHubにログインして、右上の「＋」から「New repository」を選びます。
 2. Ownerを `risa-zp`、Repository nameを `risa-quest`、公開範囲を **Public** にします。「Add README」をオンにして「Create repository」を押します。すでに作成済みならこの手順は不要です。
 3. リポジトリの「Code」画面で「Add file」→「Upload files」を選びます。
-4. このフォルダの `index.html`、`calendar.html`、`portfolio.html`、`style.css`、`script.js`、`adventure-map.png`、`.nojekyll`、`README.md`、`PUBLISHING.md` をアップロードします。フォルダごと入れ子にせず、index.htmlがリポジトリの一番上に見える状態にしてください。
+4. このフォルダの `index.html`、`calendar.html`、`life-management.html`、`portfolio.html`、`style.css`、`script.js`、`adventure-map.png`、`.nojekyll`、`README.md`、`PUBLISHING.md` をアップロードします。フォルダごと入れ子にせず、index.htmlがリポジトリの一番上に見える状態にしてください。
 5. 「Commit changes」を押して保存します。
 6. 「Settings」→左側の「Pages」を開きます。
 7. 「Build and deployment」の「Source」を **Deploy from a branch** にします。
@@ -35,8 +35,9 @@ URLを入力しただけでは公開されません。初回は、下のアッ�
 
 | ファイル | 内容 |
 | --- | --- |
-| index.html | 自己紹介、制作物一覧、学習・技術、強み、将来像、応募先への挑戦 |
-| calendar.html | カレンダーアプリの詳細 |
+| index.html | 自己紹介、制作物一覧、学習・技術、強み、将来像、次の挑戦 |
+| life-management.html | 生活管理Webアプリの新しい詳細 |
+| calendar.html | 従来の詳細ページ（新ページへの案内付き） |
 | portfolio.html | このポートフォリオの制作記録 |
 | style.css | 色、文字サイズ、余白、アニメーション、スマートフォン表示 |
 | script.js | メニュー、スクロール時の表示、動きの停止・再開 |
@@ -44,14 +45,14 @@ URLを入力しただけでは公開されません。初回は、下のアッ�
 
 空欄は `class="blank"` の要素として残しています。その項目の内容が決まったら、対応する `<dd>` 内の空欄要素を本文やリンクへ置き換えます。未提供のURLに仮のリンクを付けていません。
 
-## 今回、確認が必要な内容
+## 今後追加できる内容
 
-- カレンダーアプリの予定編集、目標・振り返り機能の完成状況。補足説明に合わせて、目標・振り返りは現在「構想」として掲載しています。
-- 実際のスクリーンショット、GitHub URL、公開アプリURL。
-- エラーごとの調査・修正方法、工夫、学び、今後の改善。
-- 自己PRを裏付ける場面・行動・結果。
-- 求人URL、応募理由、インターンで挑戦したいこと、チームに生かせること。
-- 連絡先、プロフィール画像（現時点で本人画像は掲載していません）。
+- 生活管理アプリの実際のスクリーンショット、GitHub URL、公開アプリURL。
+- 具体的な修正コードと検証結果、実際のプロンプト例。
+- ポートフォリオを見てもらった人からの感想。
+- 公開する連絡先、プロフィール画像。
+
+目標・振り返りは実装済み、ユーザー登録・ログインは未完成として反映済みです。企業固有の応募理由は掲載していません。
 
 ## 動きの設定
 
