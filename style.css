@@ -32,3 +32,16 @@
 @media(max-width:1100px){.has-journey main,.has-journey .site-footer{margin-right:46px}.scroll-journey{width:32px;right:5px;top:100px;bottom:85px}.journey-caption,.journey-end,.journey-you,.journey-stop span{display:none}.journey-stop{padding:0;min-height:44px}.journey-traveler{width:27px;height:36px}.journey-road path{stroke-width:2}.journey-stop i{width:7px;height:7px}.journey-stop{left:-8px;right:-3px}.journey-stop i{margin-left:8px}}
 @media(prefers-reduced-motion:reduce){.journey-leg{animation:none!important}}
 @media print{.scroll-journey{display:none}.has-journey main,.has-journey .site-footer{margin-right:auto}}
+
+/* The adventure trail starts with the profile, below the full-width map. */
+.has-journey main{margin-right:0}
+.has-journey main>.chapter{margin-right:180px}
+.scroll-journey{visibility:hidden;opacity:0}
+.scroll-journey.journey-visible{visibility:visible;opacity:1}
+.journey-traveler{width:36px;height:48px}
+.journey-person{image-rendering:pixelated}
+.is-walking .journey-leg{animation:journey-pixel-step .28s steps(2,end) infinite alternate}
+@keyframes journey-pixel-step{from{translate:0 -1px}to{translate:0 1px}}
+@media(max-width:1100px){.has-journey main>.chapter{margin-right:46px}.journey-traveler{width:24px;height:32px}}
+@media(prefers-reduced-motion:reduce){.is-walking .journey-leg{animation:none!important}}
+@media print{.has-journey main>.chapter{margin-right:auto}}
