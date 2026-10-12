@@ -27,10 +27,10 @@
   const rail = document.createElement('nav');
   rail.className = 'scroll-journey';
   rail.setAttribute('aria-label', '冒険の道：現在地とセクション移動');
-  rail.innerHTML = `<span class="journey-caption">YOUR JOURNEY</span>
+  rail.innerHTML = `<span class="journey-caption">MY ADVENTURE</span>
     <div class="journey-track"><svg class="journey-road" viewBox="0 0 150 600" preserveAspectRatio="none" aria-hidden="true"><path class="journey-base" d="M28 12 C8 52 48 80 28 120 S8 188 28 228 S48 296 28 336 S8 404 28 444 S48 512 28 552 L28 588"/><path class="journey-done" d="M28 12 C8 52 48 80 28 120 S8 188 28 228 S48 296 28 336 S8 404 28 444 S48 512 28 552 L28 588"/></svg>
     ${ids.map((id,i)=>`<a class="journey-stop" href="#${id}" aria-label="${String(i+1).padStart(2,'0')} ${titles[i]}へ移動"><i aria-hidden="true"></i><span><small>${String(i+1).padStart(2,'0')}</small>${titles[i]}</span></a>`).join('')}
-    <span class="journey-traveler" aria-hidden="true"><svg viewBox="0 0 48 64" class="journey-person"><ellipse cx="25" cy="60" rx="12" ry="2" fill="#203d2b" opacity=".12"/><g class="journey-leg leg-back"><path d="M24 39 L31 49 L27 58 L22 57 L25 49 L19 43" fill="#bda981" stroke="#594e3c" stroke-width="1.5"/><path d="M22 55 L28 57 L27 61 L19 60 Q17 57 22 55" fill="#69543d"/></g><g class="journey-leg leg-front"><path d="M21 39 L20 48 L14 55 L18 58 L26 49 L28 40" fill="#cbb893" stroke="#594e3c" stroke-width="1.5"/><path d="M13 53 L19 57 L17 61 L10 58 Q9 55 13 53" fill="#69543d"/></g><path d="M20 19 Q32 18 33 29 L34 43 Q25 48 12 42 L17 28Z" fill="#55745b" stroke="#304b38" stroke-width="1.5"/><path d="M29 26 L34 33 L39 35" fill="none" stroke="#c6ac85" stroke-width="5" stroke-linecap="round"/><path d="M18 19 L29 20 L31 24 L18 25" fill="#304b38"/><path d="M22 6 Q34 4 35 13 L33 19 L25 21 L20 15Z" fill="#e6c8a2" stroke="#70543a"/><path d="M19 17 Q14 9 21 4 Q32 -1 36 8 L32 12 L27 9 L26 18 L21 20Z" fill="#594434" stroke="#3d352d"/><path d="M33 13 L36 14 L33 16" fill="#e6c8a2"/><circle cx="32" cy="12" r=".8" fill="#302d28"/><path d="M15 24 Q22 20 24 28 L24 38 Q17 42 11 37 L12 29Z" fill="#c5a36c" stroke="#755c38" stroke-width="1.5"/><path d="M12 27 L23 28 L22 32 L12 32Z" fill="#ddbd83" stroke="#755c38"/><rect x="17" y="30" width="3" height="4" rx="1" fill="#927349"/></svg><span class="journey-you">現在地</span></span></div><span class="journey-end">NEXT ADVENTURE</span>`;
+    <span class="journey-traveler" aria-hidden="true"><svg viewBox="0 0 24 32" class="journey-person" shape-rendering="crispEdges"><path fill="#233c32" opacity=".15" d="M4 30h17v2H4z"/><g class="journey-leg leg-back"><path fill="#30343b" d="M13 23h5v6h-2v2h-5v-3h2z"/><path fill="#94714b" d="M12 28h5v2h-5z"/></g><g class="journey-leg leg-front"><path fill="#30343b" d="M7 23h5v5h-2v3H4v-3h3z"/><path fill="#b18a56" d="M5 28h5v2H5z"/></g><path fill="#263c32" d="M8 13h9v2h2v7h-2v3H5v-5h1v-5h2z"/><path fill="#5c8660" d="M9 15h7v3h2v5H7v-5h2z"/><path fill="#90ac73" d="M10 15h5v2h-5z"/><path fill="#3c302e" d="M8 2h9v2h3v8h-2v3H8v-2H5V5h3z"/><path fill="#79513a" d="M8 4h9v2h2v3h-6v3H7V6h1z"/><path fill="#efc48b" d="M13 8h6v3h2v2h-3v2h-6v-3h-1V9h1z"/><path fill="#322e32" d="M17 9h2v2h-2z"/><path fill="#d29b64" d="M14 13h4v2h-4z"/><path fill="#c7a25a" d="M9 2h7v2H9z"/><path fill="#735237" d="M4 15h7v2h2v8H3v-8h1z"/><path fill="#c39958" d="M4 18h7v6H4z"/><path fill="#e4c681" d="M4 16h7v3H4z"/><path fill="#775435" d="M7 18h2v3H7z"/><path fill="#efc48b" d="M18 18h2v4h-3v-2h1z"/></svg><span class="journey-you">現在地</span></span></div><span class="journey-end">NEXT ADVENTURE</span>`;
   document.body.append(rail);
   const path = rail.querySelector('.journey-base');
   const completed = rail.querySelector('.journey-done');
@@ -52,8 +52,12 @@
   function render() {
     queued = false;
     const y = Math.max(0, scrollY);
-    const positions = [0,...anchors,maxScroll];
-    const values = [0,...fractions,1];
+    const visible = y >= anchors[0] - 2;
+    rail.classList.toggle('journey-visible', visible);
+    rail.inert = !visible;
+    rail.setAttribute('aria-hidden', String(!visible));
+    const positions = [...anchors,maxScroll];
+    const values = [...fractions,1];
     let index = 0;
     while(index < positions.length - 2 && y >= positions[index+1]) index++;
     const ratio = Math.max(0,Math.min(1,(y-positions[index])/Math.max(1,positions[index+1]-positions[index])));
